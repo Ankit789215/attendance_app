@@ -11,8 +11,8 @@ class AppConstants {
   static const double borderRadiusLarge = 24.0;
 
   // Supabase Constants
-  static const String supabaseUrl = 'YOUR_SUPABASE_URL';
-  static const String supabaseAnonKey = 'YOUR_SUPABASE_ANON_KEY';
+  static const String supabaseUrl = 'https://xjlbsjqiwgjtwhrrqkjg.supabase.co';
+  static const String supabaseAnonKey = 'sb_publishable_Ew3XPxL_kFpcVll8jJNiHA_cTEYIIRP';
 
   // SharedPreferences Keys
   static const String rememberMeKey = 'remember_me';
