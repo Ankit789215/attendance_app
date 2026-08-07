@@ -5,6 +5,8 @@ import '../features/authentication/presentation/login_screen.dart';
 import '../features/authentication/presentation/splash_screen.dart';
 import '../features/dashboard/presentation/dashboard_screen.dart';
 import '../features/students/presentation/students_screen.dart';
+import '../features/students/presentation/student_details_screen.dart';
+import '../features/students/domain/models/student.dart';
 import '../features/attendance/presentation/attendance_screen.dart';
 import '../features/reports/presentation/reports_screen.dart';
 import '../features/batches/presentation/batches_screen.dart';
@@ -33,6 +35,13 @@ class AppRouter {
       GoRoute(
         path: '/students',
         builder: (context, state) => const StudentsScreen(),
+      ),
+      GoRoute(
+        path: '/students/:id',
+        builder: (context, state) {
+          final student = state.extra as Student;
+          return StudentDetailsScreen(student: student);
+        },
       ),
       GoRoute(
         path: '/attendance',
