@@ -1,15 +1,16 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../domain/models/attendance.dart';
 import '../../domain/repositories/attendance_repository.dart';
-import '../../data/repositories/dummy_attendance_repository.dart';
+import '../../data/repositories/supabase_attendance_repository.dart';
 import '../../../students/presentation/providers/student_providers.dart';
 import '../../../students/domain/models/student.dart';
 
 // --- Repository Provider ---
 final attendanceRepositoryProvider = Provider<AttendanceRepository>((ref) {
-  return DummyAttendanceRepository();
+  return SupabaseAttendanceRepository(Supabase.instance.client);
 });
 
 // --- Selected Batch for Attendance ---
@@ -74,7 +75,7 @@ final saveAttendanceProvider = FutureProvider.family<void, String>((ref, batchNa
   ).toList();
 
   final session = AttendanceSession(
-    id: const Uuid().v4(),
+    id: '', // Supabase will generate the ID for the session
     batchName: batchName,
     date: DateTime.now(),
     records: records,

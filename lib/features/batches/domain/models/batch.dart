@@ -24,4 +24,22 @@ class Batch {
       numberOfStudents: numberOfStudents ?? this.numberOfStudents,
     );
   }
+
+  factory Batch.fromJson(Map<String, dynamic> json) {
+    return Batch(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      timing: json['timing'] as String,
+      numberOfStudents: json['number_of_students'] as int? ?? 0,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      if (id.isNotEmpty) 'id': id,
+      'name': name,
+      'timing': timing,
+      'number_of_students': numberOfStudents,
+    };
+  }
 }

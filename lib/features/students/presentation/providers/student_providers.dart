@@ -1,12 +1,13 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../domain/models/student.dart';
 import '../../domain/repositories/student_repository.dart';
-import '../../data/repositories/dummy_student_repository.dart';
+import '../../data/repositories/supabase_student_repository.dart';
 
 // --- Repository Provider ---
 final studentRepositoryProvider = Provider<StudentRepository>((ref) {
-  return DummyStudentRepository();
+  return SupabaseStudentRepository(Supabase.instance.client);
 });
 
 // --- State Providers for Filtering and Searching ---

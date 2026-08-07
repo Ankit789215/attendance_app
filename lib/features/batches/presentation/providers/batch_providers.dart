@@ -1,11 +1,13 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:supabase_flutter/supabase_flutter.dart';
+
 import '../../domain/models/batch.dart';
 import '../../domain/repositories/batch_repository.dart';
-import '../../data/repositories/dummy_batch_repository.dart';
+import '../../data/repositories/supabase_batch_repository.dart';
 
 final batchRepositoryProvider = Provider<BatchRepository>((ref) {
-  return DummyBatchRepository();
+  return SupabaseBatchRepository(Supabase.instance.client);
 });
 
 class BatchesNotifier extends StateNotifier<AsyncValue<List<Batch>>> {
